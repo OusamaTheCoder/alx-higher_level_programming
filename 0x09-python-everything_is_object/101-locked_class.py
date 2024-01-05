@@ -3,7 +3,7 @@
 
 
 class LockedClass:
-        """
+    """
     Prevent the user from instantiating new LockedClass attributes
     for anything but attributes in 'first_name'.
     """
