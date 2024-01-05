@@ -1,1 +1,1 @@
-def copy_list(1): return l[:]
+def copy_list(l): return l[:]
