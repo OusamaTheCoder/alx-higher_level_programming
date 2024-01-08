@@ -1,0 +1,183 @@
+Test Cases for the `BaseGeometry` class in the `7-base_geometry` module
+=======================================================================
+
+Using `BaseGeometry`:
+---------------------
+
+Import the `BaseGeometry` class from the module:
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+
+Correct Class Type Test:
+
+    >>> bg = BaseGeometry()
+    >>> type(bg) == BaseGeometry
+    True
+
+
+`area()` Instance Method:
+-------------------------
+`area` method is an instance method:
+
+    >>> type(BaseGeometry.__dict__['area'])
+    <class 'function'>
+
+
+`area` method Called via Class with No Arguments:
+
+    >>> bg.__class__.area()
+    Traceback (most recent call last):
+      ...
+    TypeError: area() missing 1 required positional argument: 'self'
+
+
+`area` method Args Test (1 Arg):
+
+    >>> bg.area(10)
+    Traceback (most recent call last):
+      ...
+    TypeError: area() takes 1 positional argument but 2 were given
+
+
+`area` method Normal Test:
+
+    >>> bg.area()
+    Traceback (most recent call last):
+      ...
+    Exception: area() is not implemented
+
+
+`integer_validator()` Instance Method:
+--------------------------------------
+`integer_validator` is an instance method:
+
+    >>> type(BaseGeometry.__dict__['integer_validator'])
+    <class 'function'>
+
+
+`integer_validator` Method Called via Class with No Args:
+
+
+    >>> bg.__class__.integer_validator()
+    Traceback (most recent call last):
+      ...
+    TypeError: integer_validator() missing 3 required positional arguments: 'self', 'name', and 'value'
+
+
+`integer_validator` Method Args Test (0 Args):
+
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+      ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+
+`integer_validator` Method Args Test (3 Args):
+
+    >>> bg.integer_validator(1, 1, 1)
+    Traceback (most recent call last):
+      ...
+    TypeError: integer_validator() ta>kes 3 positional arguments but 4 were given
+
+
+`integer_validator` Method Float.0 Value:
+
+    >>> bg.integer_validator("foo", 3.0)
+    Traceback (most recent call last):
+      ...
+    TypeError: foo must be an integer
+
+
+`integer_validator` Method Float.x Value:
+
+    >>> bg.integer_validator("arg", 3.14)
+    Traceback (most recent call last):
+      ...
+    TypeError: arg must be an integer
+
+
+`integer_validator` Method String Value:
+
+    >>> bg.integer_validator("Bar", "bar")
+    Traceback (most recent call last):
+      ...
+    TypeError: Bar must be an integer
+
+
+`integer_validator` Method Bool Value:
+
+    >>> bg.integer_validator("zar", True)
+    Traceback (most recent call last):
+      ...
+    TypeError: zar must be an integer
+
+
+`integer_validator` Method List Value:
+
+    >>> bg.integer_validator("a", [1])
+    Traceback (most recent call last):
+      ...
+    TypeError: a must be an integer
+
+
+`integer_validator` Method None Value:
+
+    >>> bg.integer_validator("foo", None)
+    Traceback (most recent call last):
+      ...
+    TypeError: foo must be an integer
+
+
+`integer_validator` Method 0 Value:
+
+    >> bg.integer_validator("key", 0)
+    Traceback (most recent call last):
+      ...
+    ValueError: key must be greater than 0
+
+
+`integer_validator` Method Negative Value:
+
+    >>> bg.integer_validator("key", -1000)
+    Traceback (most recent call last):
+      ...
+    ValueError: key must be greater than 0
+
+
+`integer_validator` Method OK Value:
+
+    >>> bg.integer_validator("key", 98)
+
+
+`integer_validator` Method OK Value 2:
+
+    >>> bg.integer_validator("key", 1)
+
+
+`integer_validator` Method Empty String:
+
+    >>> bg.integer_validator("", 1)
+
+
+`integer_validator` Method None Value 2:
+
+    >>> bg.integer_validator(None, 1)
+
+
+`integer_validator` Method Tuple:
+
+    >>> bg.integer_validator("Foo", (1, 2))
+    Traceback (most recent call last):
+      ...
+    TypeError: Foo must be an integer
+
+
+`integer_validator` Method Dict:
+
+    >>> bg.integer_validator("Foo", {1, 2})
+    Traceback (most recent call last):
+      ...
+    TypeError: Foo must be an integer
+
+
