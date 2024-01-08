@@ -8,8 +8,10 @@ class Rectangle(BaseGeometry):
     def __init__(self, width, height):
         '''__init__.'''
         super().__init__()
-        self.__width = self.integer_validator("width", width)
-        self.__height = self.integer_validator("height", height)
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
+        self.__width = width
+        self.__height = height
 
     def area(self):
         '''Area method.'''
