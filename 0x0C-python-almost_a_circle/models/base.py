@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 """Header"""
 
+
 class Base:
     """
-    This is the Base class, which will serve as the base class for other classes in the project.
+    This is the Base class,
+    which will serve as the base class for other classes in the project.
 
     Attributes:
     - __nb_objects (int): Private class attribute to manage the id attribute.
@@ -20,8 +22,10 @@ class Base:
         Initialize the Base instance.
 
         Args:
-        - id (int, optional): Object's id. If provided, assign it to the id attribute;
-          otherwise, increment __nb_objects and assign the new value to the id attribute.
+        - id (int, optional): Object's id.
+        If provided, assign it to the id attribute;
+          otherwise, increment __nb_objects
+          and assign the new value to the id attribute.
         """
         if id is not None:
             self.id = id
