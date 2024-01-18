@@ -22,8 +22,10 @@ class Rectangle(Base):
     - Getter and setter methods for each private attribute.
     - area(self): Public method to calculate;
     and return the area value of the Rectangle.
-    - display(self): Public method to print;
-    the Rectangle instance with the character '#'.
+    - display(self): Public method to print the Rectangle instance;
+    with the character '#'.
+    - __str__(self): Override the __str__ method to return a string;
+    representation of the Rectangle.
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -109,3 +111,10 @@ class Rectangle(Base):
         """Print the Rectangle instance with the character '#'."""
         for _ in range(self.__height):
             print("#" * self.__width)
+
+    def __str__(self):
+        """Return a string representation of the Rectangle."""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+                self.id, self.__x,
+                self.__y, self.__width,
+                self.__height)
