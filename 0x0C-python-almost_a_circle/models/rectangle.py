@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""Header"""
+"""
+This is the Rectangle module.
+This module contains the Rectangle class.
+"""
 
 
 from models.base import Base
@@ -7,42 +10,14 @@ from models.base import Base
 
 class Rectangle(Base):
     """
-    This is the Rectangle class, which inherits from the Base class.
-
-    Attributes:
-    - __width (int): Private instance attribute for the width.
-    - __height (int): Private instance attribute for the height.
-    - __x (int): Private instance attribute for the x-coordinate.
-    - __y (int): Private instance attribute for the y-coordinate.
-    - id (int): Public instance attribute inherited from the Base class.
-
-    Methods:
-    - __init__(self, width, height, x=0, y=0, id=None):
-    Constructor method to initialize the Rectangle instance.
-    - Getter and setter methods for each private attribute.
-    - area(self): Public method to calculate and return;
-    the area value of the Rectangle.
-    - display(self): Public method to print the Rectangle instance;
-    with the character '#', considering x and y.
-    - __str__(self): Override the __str__ method to return a string;
-    representation of the Rectangle.
-    - update(self, *args): Public method to update attributes based;
-    on the provided arguments.
+    A Rectangle class that inherits from the Base class.
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """
         Initialize the Rectangle instance.
-
-        Args:
-        - width (int): Width of the rectangle.
-        - height (int): Height of the rectangle.
-        - x (int, optional): x-coordinate of the rectangle (default is 0).
-        - y (int, optional): y-coordinate of the rectangle (default is 0).
-        - id (int, optional): Object's id. If provided,
-        assign it to the id attribute; otherwise,
-        call the super class with id to use the logic of the Base class.
         """
+
         super().__init__(id)
         self.width = width
         self.height = height
@@ -111,7 +86,7 @@ class Rectangle(Base):
 
     def display(self):
         """Print the Rectangle instance with the character '#',
-        considering x and y."""
+        by considering x and y."""
         for _ in range(self.__y):
             print()
         for _ in range(self.__height):
@@ -120,21 +95,18 @@ class Rectangle(Base):
     def __str__(self):
         """Return a string representation of the Rectangle."""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
-                self.id,
-                self.__x,
-                self.__y,
-                self.__width,
-                self.__height)
+            self.id,
+            self.__x,
+            self.__y,
+            self.__width,
+            self.__height)
 
-    def update(self, *args):
-        """
-        Update attributes based on the provided arguments.
-
-        Args:
-        - args (int): Variable number of arguments in the order
-        (id, width, height, x, y).
-        """
+    def update(self, *args, **kwargs):
+        """Update the attributes of the Rectangle instance."""
         if args:
             attributes = ["id", "width", "height", "x", "y"]
             for i, arg in enumerate(args):
                 setattr(self, attributes[i], arg)
+        elif kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
