@@ -1,14 +1,24 @@
 #!/usr/bin/python3
-'''Rectangle module'''
+'''Rectangle class module'''
 
 
 from models.base import Base
 
 
 class Rectangle(Base):
-    """Rectangle class that inherits from Base."""
+    '''Rectangle class'''
+
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Constructor method to initialize the Rectangle instance."""
+        """
+        Initialize the Rectangle instance.
+
+        Args:
+        - width (int): Width of the rectangle.
+        - height (int): Height of the rectangle.
+        - x (int): x-coordinate of the rectangle.
+        - y (int): y-coordinate of the rectangle.
+        - id (int): The id of the rectangle.
+        """
         super().__init__(id)
         self.width = width
         self.height = height
@@ -77,7 +87,7 @@ class Rectangle(Base):
 
     def display(self):
         """Print the Rectangle instance with the character '#',
-        considering x and y."""
+        by considering x and y."""
         for _ in range(self.__y):
             print()
         for _ in range(self.__height):
@@ -86,10 +96,16 @@ class Rectangle(Base):
     def __str__(self):
         """Return a string representation of the Rectangle."""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
-                self.id, self.__x, self.__y, self.__width, self.__height)
+            self.id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args, **kwargs):
-        """Public method to update attributes based on provided arguments."""
+        """
+        Update attributes based on the provided arguments.
+
+        Args:
+        - *args: Variable number of arguments.
+        - **kwargs: Variable number of keyword arguments.
+        """
         if args:
             attributes = ["id", "width", "height", "x", "y"]
             for i, arg in enumerate(args):
@@ -97,3 +113,18 @@ class Rectangle(Base):
         elif kwargs:
             for key, value in kwargs.items():
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        """
+        Return the dictionary representation of the Rectangle.
+
+        Returns:
+        - dict: The dictionary representation of the Rectangle.
+        """
+        return {
+            "id": self.id,
+            "width": self.__width,
+            "height": self.__height,
+            "x": self.__x,
+            "y": self.__y
+        }
