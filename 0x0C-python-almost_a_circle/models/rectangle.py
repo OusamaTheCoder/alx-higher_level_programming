@@ -17,9 +17,11 @@ class Rectangle(Base):
     - id (int): Public instance attribute inherited from the Base class.
 
     Methods:
-    - __init__(self, width, height, x=0, y=0, id=None):
-    Constructor method to initialize the Rectangle instance.
+    - __init__(self, width, height, x=0, y=0, id=None): Constructor;
+    method to initialize the Rectangle instance.
     - Getter and setter methods for each private attribute.
+    - area(self): Public method to calculate;
+    and return the area value of the Rectangle instance.
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -96,3 +98,7 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """Calculate and return the area value of the Rectangle."""
+        return self.__width * self.__height
