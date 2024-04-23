@@ -60,10 +60,11 @@ class Base:
 
         Returns:
         - None
-        """
+"""
         if list_objs is None:
             list_objs = []
         filename = cls.__name__ + ".json"
         with open(filename, "w") as file:
-            json_str = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
+            json_str = cls.to_json_string([obj.to_dictionary()
+                                           for obj in list_objs])
             file.write(json_str)
