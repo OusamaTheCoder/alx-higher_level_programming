@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Header"""
 
+import json
+
 
 class Base:
     """
@@ -32,3 +34,18 @@ class Base:
         else:
             type(self).__nb_objects += 1
             self.id = type(self).__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """
+        Return the JSON string representation of list_dictionaries.
+
+        Args:
+        - list_dictionaries (list): List of dictionaries.
+
+        Returns:
+        - str: JSON string representation of list_dictionaries.
+        """
+        if not list_dictionaries:
+            return "[]"
+        return json.dumps(list_dictionaries)
